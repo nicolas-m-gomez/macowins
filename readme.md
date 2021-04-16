@@ -17,18 +17,15 @@ El tipo de prenda se identifica con el enum TipoPrenda.</p>
     return estadoPrenda.precioModificado(this.precioBase)
   }
 }
-
 interface EstadoPrenda{
   BigDecimal precioModificado(BigDecimal precioBase)
 }
-
 class Nueva extends EstadoPrenda{
 ...
   BigDecimal precioModificado(precioBase){
     return precioBase
   }  
 }
-
 class Promocion{
   BigDecimal montoDescuento
 ...
