@@ -48,22 +48,18 @@ class Liquidacion{
   BigDecimal precioVentaNeto(){
     return this.itemsVenta.map(item -&gt; item.precioItemVenta()).sum()
   }
-
   BigDecimal precioVentaFinal(){
     return this.formaDePago.recargo(this.precioVentaNeto())
   }
 }
-
 interface FormaDePago{
   BigDecimal recargo(BigDecimal precioNeto)
 }
-
 class Efectivo extends FormaDePago{
   BigDecimal recargo(BigDecimal precioNeto){
     return precioNeto
   }
 }
-
 class TarjetaCredito extends FormaDePago{
   ... 
   BigDecimal recargo(BigDecimal precioNeto){
