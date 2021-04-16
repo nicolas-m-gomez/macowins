@@ -46,33 +46,33 @@ class Liquidacion{
 </code></pre>
 <h2 id="ganancias-de-un-día">Ganancias de un día</h2>
 <p>Primero, el precio final de venta se calcula a partir de la función <em>precioVentaNeto()</em> que suma el precio unitario de las prendas multiplicado por la cantidad. El precio de venta final se calcula a partir de la forma de pago.</p>
-<pre><code>class Venta{
-  ...
-  BigDecimal precioVentaNeto(){
-    return this.itemsVenta.map(item -&gt; item.precioItemVenta()).sum()
-  }
-
-  BigDecimal precioVentaFinal(){
-    return this.formaDePago.recargo(this.precioVentaNeto())
-  }
-}
-
-interface FormaDePago{
-  BigDecimal recargo(BigDecimal precioNeto)
-}
-
-class Efectivo extends FormaDePago{
-  BigDecimal recargo(BigDecimal precioNeto){
-    return precioNeto
-  }
-}
-
-class TarjetaCredito extends FormaDePago{
-  ... 
-  BigDecimal recargo(BigDecimal precioNeto){
-    return precioNeto + cantidadCuotas * COEFICIENTE_RECARGO + 0.01 * precioNeto
-  }
-}
+<pre><code>     class Venta{
+      ...
+      BigDecimal precioVentaNeto(){
+        return this.itemsVenta.map(item -&gt; item.precioItemVenta()).sum()
+      }
+    
+      BigDecimal precioVentaFinal(){
+        return this.formaDePago.recargo(this.precioVentaNeto())
+      }
+    }
+    
+    interface FormaDePago{
+      BigDecimal recargo(BigDecimal precioNeto)
+    }
+    
+    class Efectivo extends FormaDePago{
+      BigDecimal recargo(BigDecimal precioNeto){
+        return precioNeto
+      }
+    }
+    
+    class TarjetaCredito extends FormaDePago{
+      ... 
+      BigDecimal recargo(BigDecimal precioNeto){
+        return precioNeto + cantidadCuotas * COEFICIENTE_RECARGO + 0.01 * precioNeto
+      }
+    }
 </code></pre>
 <p>Por último, para obtener el listado de ganancias del día se debe usar la función <em>gananciasDel(unaFecha)</em> de la clase Ganancias que filtra las ventas del día que se le envíe como parámetro.</p>
 <pre><code>class Ganancias{
