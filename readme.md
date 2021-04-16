@@ -43,7 +43,7 @@ class Liquidacion{
 </code></pre>
 <h2 id="ganancias-de-un-día">Ganancias de un día</h2>
 <p>Primero, el precio final de venta se calcula a partir de la función <em>precioVentaNeto()</em> que suma el precio unitario de las prendas multiplicado por la cantidad. El precio de venta final se calcula a partir de la forma de pago.</p>
-<pre><code>     class Venta{
+<pre><code> class Venta{
       ...
       BigDecimal precioVentaNeto(){
         return this.itemsVenta.map(item -&gt; item.precioItemVenta()).sum()
